@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/slankdev/vtyd"
+	"github.com/slankdev/vty"
 	"os"
 	"os/signal"
 	"syscall"
