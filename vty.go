@@ -11,7 +11,7 @@ import (
 
 const (
 	VTYD_MODULE = "vtyd"
-	QUAGGAD_PORT   = 7979
+	VTYD_PORT   = 7979
 )
 
 var (

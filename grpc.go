@@ -76,7 +76,7 @@ func grpcRegisterModule(conn *grpc.ClientConn) error {
 	client := rpc.NewRegisterClient(conn)
 	request := &rpc.RegisterModuleRequest{
 		Module: VTYD_MODULE,
-		Port:   fmt.Sprintf("%d", QUAGGAD_PORT),
+		Port:   fmt.Sprintf("%d", VTYD_PORT),
 	}
 	_, err := client.DoRegisterModule(context.Background(), request)
 	if err != nil {
@@ -134,7 +134,7 @@ func grpcSubscribe(conn *grpc.ClientConn) (rpc.Config_DoConfigClient, error) {
 	request := &rpc.ConfigRequest{
 		Type:   rpc.ConfigType_SUBSCRIBE_MULTI,
 		Module: VTYD_MODULE,
-		Port:   QUAGGAD_PORT,
+		Port:   VTYD_PORT,
 		Path:   path,
 	}
 	err = stream.Send(request)
@@ -240,7 +240,7 @@ func grpcLoop() {
 }
 
 func initGrpc() {
-	listen, err := net.Listen("tcp", fmt.Sprintf(":%d", QUAGGAD_PORT))
+	listen, err := net.Listen("tcp", fmt.Sprintf(":%d", VTYD_PORT))
 	if err != nil {
 		grpclog.Fatalf("failed %v", err)
 	}
