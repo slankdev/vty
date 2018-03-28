@@ -15,10 +15,7 @@
 
 [[projects]]
   name = "github.com/coreswitch/openconfigd"
-  packages = [
-    "proto",
-    "quagga"
-  ]
+  packages = ["proto"]
   revision = "b329dc35683641e5e8b80af8176967af6ced4367"
   version = "v0.8.0"
 
@@ -108,6 +105,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1907b8cb94435a1e789bd52d511d9d8b45859c7ae38f9e35de8fc94ba440d638"
+  inputs-digest = "f117df2a8748c1287d1c5c5d68fa20de07af370316d9ecb07f93467eb0c5e7df"
   solver-name = "gps-cdcl"
   solver-version = 1
