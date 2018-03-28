@@ -3,66 +3,64 @@ package main
 import (
 	"flag"
 	"fmt"
-	// "regexp"
+	"regexp"
 	"time"
-
 	"github.com/golang/glog"
 	"github.com/google/goexpect"
-	"github.com/google/goterm/term"
-	"github.com/ziutek/telnet"
 )
 
 const (
-	address = "localhost:2605"
-	timeout = 5 * time.Second
-	command = "geoip"
+	timeout = 10 * time.Millisecond
 )
 
 func main() {
 	flag.Parse()
-
-	fmt.Println(term.Bluef("Telnet spawner example"))
-	exp, _, err := telnetSpawn(address, timeout, expect.Verbose(true))
+	e, _, err := expect.Spawn("telnet localhost 2605", -1)
 	if err != nil {
-		glog.Exitf("telnetSpawn(%q,%v) failed: %v", address, timeout, err)
+		glog.Exit(err)
 	}
-
 	defer func() {
-		if err := exp.Close(); err != nil {
-			glog.Infof("exp.Close failed: %v", err)
-		}
+		fmt.Printf("close\n")
+		e.Close()
 	}()
 
-	res, err := exp.ExpectBatch([]expect.Batcher{
-		&expect.BExp{R: `\n\.`},
-		&expect.BSnd{S: command + "\r\n"},
-		&expect.BExp{R: `\n\.`},
-	}, timeout)
-	if err != nil {
-		glog.Exitf("exp.ExpectBatch failed: %v , res: %v", err, res)
-	}
-	fmt.Println(term.Greenf("Res: %s", res[len(res)-1].Output))
+	// str := "Trying 127.0.0.1...\n"
+	// str += "Connected to localhost.\n"
+	// str += "Escape character is '^]'.\n"
+	// str += "\n"
+	// str += "Hello, this is Quagga (version 0.99.24.1).\n"
+	// str += "Copyright 1996-2005 Kunihiro Ishiguro, et al.\n"
+	// str += "\n"
+	// str += "\n"
+	// str += "User Access Verification\n"
+	// str += "\n"
+	str := ".*Password: "
+	passRE   := regexp.MustCompile(str)
+	promptRE := regexp.MustCompile("router> ")
+
+	fmt.Printf("start\n");
+	res,_,_ := e.Expect(passRE, timeout)
+	fmt.Printf("wait1 res=[%s]\n", res);
+	fmt.Printf("--------------\n")
+	e.Send("zebra\n")
+	e.Expect(promptRE, timeout)
+	fmt.Printf("wait2\n");
+	e.Send("show memory\n")
+	a,_,_ := e.Expect(promptRE, timeout)
+	fmt.Println("++++++++++++++++++++++")
+	fmt.Println(a)
+	fmt.Println("++++++++++++++++++++++")
+
+	// cmd  := flag.String("show memory", "", "command to run")
+	// pass := flag.String("zebra", "", "password to use")
+
+	// e.Expect(passRE, timeout)
+	// e.Send(*pass + "\n")
+	// e.Expect(promptRE, timeout)
+	// result,_,_ := e.Expect(promptRE, timeout)
+	// e.Send("show memory\n")
+	// e.Send("exit\n")
 
 }
 
-func telnetSpawn(addr string, timeout time.Duration, opts ...expect.Option) (expect.Expecter, <-chan error, error) {
-	conn, err := telnet.Dial("tcp", addr)
-	if err != nil {
-		return nil, nil, err
-	}
 
-	resCh := make(chan error)
-
-	return expect.SpawnGeneric(&expect.GenOptions{
-		In:  conn,
-		Out: conn,
-		Wait: func() error {
-			return <-resCh
-		},
-		Close: func() error {
-			close(resCh)
-			return conn.Close()
-		},
-		Check: func() bool { return true },
-	}, timeout, opts...)
-}
