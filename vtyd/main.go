@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Starting quagga interpreter daemon")
+	fmt.Println("Starting vty interpreter daemon")
 
 	vty.Main()
 
