@@ -54,7 +54,7 @@ func quaggaRuleSort(rules []string) {
 
 func quaggaVtysh(cmds ...string) *string {
 	cmdArgs := []string{}
-	cmdArgs = append(cmdArgs, "./kamuee_vtysh.py")
+	cmdArgs = append(cmdArgs, "kamuee_vtysh.py")
 	for _, c := range cmds {
 		cmdArgs = append(cmdArgs, "-c", c)
 		fmt.Println("quaggaVtysh: ", c)
