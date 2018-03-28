@@ -1,0 +1,14 @@
+#!/usr/bin/expect
+
+spawn telnet localhost 2605
+expect "Password: "
+send "zebra\n"
+expect "> "
+send "terminal length 0\n"
+expect "> "
+send "show memory\n"
+expect "> "
+send "exit\n"
+
+interact
+
