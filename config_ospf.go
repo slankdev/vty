@@ -1,4 +1,4 @@
-package kamuee
+package vty
 
 import (
 	"fmt"

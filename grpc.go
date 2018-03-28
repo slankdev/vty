@@ -1,4 +1,4 @@
-package kamuee
+package vty
 
 import (
 	"bufio"
@@ -75,7 +75,7 @@ func (s *grpcShowServer) Show(request *rpc.ShowRequest, stream rpc.Show_ShowServ
 func grpcRegisterModule(conn *grpc.ClientConn) error {
 	client := rpc.NewRegisterClient(conn)
 	request := &rpc.RegisterModuleRequest{
-		Module: QUAGGAD_MODULE,
+		Module: VTYD_MODULE,
 		Port:   fmt.Sprintf("%d", QUAGGAD_PORT),
 	}
 	_, err := client.DoRegisterModule(context.Background(), request)
@@ -94,7 +94,7 @@ func grpcRegisterCommands(conn *grpc.ClientConn) {
 	showParser = cmd.NewParser()
 
 	for _, command := range showCommands {
-		command.Module = QUAGGAD_MODULE
+		command.Module = VTYD_MODULE
 		command.Privilege = 1
 		command.Code = rpc.ExecCode_REDIRECT_SHOW
 
@@ -111,7 +111,7 @@ func grpcRegisterCommands(conn *grpc.ClientConn) {
 	execParser = cmd.NewParser()
 
 	for _, command := range execCommands {
-		command.Module = QUAGGAD_MODULE
+		command.Module = VTYD_MODULE
 		command.Privilege = 1
 		command.Code = rpc.ExecCode_REDIRECT
 
@@ -133,7 +133,7 @@ func grpcSubscribe(conn *grpc.ClientConn) (rpc.Config_DoConfigClient, error) {
 	path := []string{"interfaces", "protocols", "policy"}
 	request := &rpc.ConfigRequest{
 		Type:   rpc.ConfigType_SUBSCRIBE_MULTI,
-		Module: QUAGGAD_MODULE,
+		Module: VTYD_MODULE,
 		Port:   QUAGGAD_PORT,
 		Path:   path,
 	}
@@ -174,7 +174,6 @@ func grpcLoop() {
 		}
 		for {
 			conf, err := stream.Recv()
-			fmt.Println("slankdev slandkev");
 			if err == io.EOF {
 				break
 			}

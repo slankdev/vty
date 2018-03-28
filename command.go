@@ -1,25 +1,34 @@
-package kamuee
+package vty
 
 var showCmdMap = map[string]func(string) *string{
-	"quagga_show": quaggaShow,
+	"vty_show": vtyShow,
 }
 
 var execCmdMap = map[string]func(string) *string{
-	"quagga_exec": quaggaExec,
+	"vty_exec": vtyExec,
 }
 
-func quaggaShow(line string) *string {
+func vtyShow(line string) *string {
 	return quaggaVtysh(line)
 }
 
-func quaggaExec(line string) *string {
+func vtyExec(line string) *string {
 	return quaggaVtysh(line)
 }
 
 const showCmdSpec = `
 [
     {
-        "name": "quagga_show",
+        "name": "vty_show",
+        "line": "show author",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "Author information"
+        ]
+    },
+    {
+        "name": "vty_show",
         "line": "show running-config",
         "mode": "exec",
         "helps": [
@@ -28,7 +37,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -41,7 +50,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -54,7 +63,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -67,7 +76,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show route-map [WORD]",
         "mode": "exec",
         "helps": [
@@ -77,7 +86,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp",
         "mode": "exec",
         "helps": [
@@ -86,7 +95,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6",
         "mode": "exec",
         "helps": [
@@ -96,7 +105,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -106,7 +115,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -116,7 +125,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -126,7 +135,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -136,7 +145,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -147,7 +156,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -158,7 +167,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -169,7 +178,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -180,7 +189,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community",
         "mode": "exec",
         "helps": [
@@ -190,7 +199,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community",
         "mode": "exec",
         "helps": [
@@ -201,7 +210,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -216,7 +225,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -230,7 +239,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -243,7 +252,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -255,7 +264,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -271,7 +280,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -286,7 +295,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -300,7 +309,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -313,7 +322,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community-list (<1-500>|WORD)",
         "mode": "exec",
         "helps": [
@@ -323,7 +332,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community-list (<1-500>|WORD)",
         "mode": "exec",
         "helps": [
@@ -334,7 +343,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp community-list (<1-500>|WORD) exact-match",
         "mode": "exec",
         "helps": [
@@ -346,7 +355,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 community-list (<1-500>|WORD) exact-match",
         "mode": "exec",
         "helps": [
@@ -359,7 +368,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp filter-list WORD",
         "mode": "exec",
         "helps": [
@@ -370,7 +379,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 filter-list WORD",
         "mode": "exec",
         "helps": [
@@ -382,7 +391,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast) rsclient summary",
         "mode": "exec",
         "helps": [
@@ -395,7 +404,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv4 (unicast|multicast) rsclient summary",
         "mode": "exec",
         "helps": [
@@ -410,7 +419,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast) rsclient summary",
         "mode": "exec",
         "helps": [
@@ -423,7 +432,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 (unicast|multicast) rsclient summary",
         "mode": "exec",
         "helps": [
@@ -438,7 +447,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 (unicast|multicast) summary",
         "mode": "exec",
         "helps": [
@@ -452,7 +461,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 rsclient summary",
         "mode": "exec",
         "helps": [
@@ -466,7 +475,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD rsclient summary",
         "mode": "exec",
         "helps": [
@@ -479,7 +488,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 summary",
         "mode": "exec",
         "helps": [
@@ -492,7 +501,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD summary",
         "mode": "exec",
         "helps": [
@@ -504,7 +513,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X) prefix-counts",
         "mode": "exec",
         "helps": [
@@ -517,7 +526,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast)",
         "mode": "exec",
         "helps": [
@@ -527,7 +536,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast) X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -539,7 +548,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast) X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -551,7 +560,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast) summary",
         "mode": "exec",
         "helps": [
@@ -563,7 +572,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp memory",
         "mode": "exec",
         "helps": [
@@ -573,7 +582,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X) received prefix-filter",
         "mode": "exec",
         "helps": [
@@ -587,7 +596,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors (A.B.C.D|X:X::X:X) received prefix-filter",
         "mode": "exec",
         "helps": [
@@ -600,7 +609,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -610,7 +619,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -621,7 +630,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -633,7 +642,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -644,7 +653,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp X:X::X:X/M longer-prefixes",
         "mode": "exec",
         "helps": [
@@ -655,7 +664,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 X:X::X:X/M longer-prefixes",
         "mode": "exec",
         "helps": [
@@ -667,7 +676,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 regexp .LINE",
         "mode": "exec",
         "helps": [
@@ -679,7 +688,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp regexp .LINE",
         "mode": "exec",
         "helps": [
@@ -690,7 +699,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -700,7 +709,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -711,7 +720,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 route-map WORD",
         "mode": "exec",
         "helps": [
@@ -723,7 +732,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp route-map WORD",
         "mode": "exec",
         "helps": [
@@ -734,7 +743,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 rsclient summary",
         "mode": "exec",
         "helps": [
@@ -746,7 +755,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp rsclient summary",
         "mode": "exec",
         "helps": [
@@ -757,7 +766,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp (ipv4) (vpnv4) statistics",
         "mode": "exec",
         "helps": [
@@ -769,7 +778,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp (ipv4|ipv6) (unicast|multicast) statistics",
         "mode": "exec",
         "helps": [
@@ -781,7 +790,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4) (vpnv4) statistics",
         "mode": "exec",
         "helps": [
@@ -792,7 +801,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4|ipv6) (unicast|multicast) statistics",
         "mode": "exec",
         "helps": [
@@ -803,7 +812,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 summary",
         "mode": "exec",
         "helps": [
@@ -814,7 +823,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp summary",
         "mode": "exec",
         "helps": [
@@ -824,7 +833,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD",
         "mode": "exec",
         "helps": [
@@ -835,7 +844,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6",
         "mode": "exec",
         "helps": [
@@ -847,7 +856,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4|ipv6) (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -861,7 +870,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4|ipv6) (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -875,7 +884,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4|ipv6) (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -889,7 +898,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4|ipv6) (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -903,7 +912,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4|ipv6) (unicast|multicast) community",
         "mode": "exec",
         "helps": [
@@ -917,7 +926,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD (ipv4|ipv6) (unicast|multicast) neighbors (A.B.C.D|X:X::X:X) (advertised-routes|received-routes)",
         "mode": "exec",
         "helps": [
@@ -931,7 +940,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -943,7 +952,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv4 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -957,7 +966,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -971,7 +980,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv4 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -987,7 +996,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -1001,7 +1010,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv4 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -1017,7 +1026,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -1029,7 +1038,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -1043,7 +1052,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -1057,7 +1066,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -1073,7 +1082,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -1087,7 +1096,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 (unicast|multicast) rsclient (A.B.C.D|X:X::X:X) X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -1103,7 +1112,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -1116,7 +1125,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -1128,7 +1137,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -1143,7 +1152,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -1157,7 +1166,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -1170,7 +1179,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X) dampened-routes",
         "mode": "exec",
         "helps": [
@@ -1183,7 +1192,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors (A.B.C.D|X:X::X:X) dampened-routes",
         "mode": "exec",
         "helps": [
@@ -1195,7 +1204,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors (A.B.C.D|X:X::X:X) dampened-routes",
         "mode": "exec",
         "helps": [
@@ -1210,7 +1219,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors (A.B.C.D|X:X::X:X) dampened-routes",
         "mode": "exec",
         "helps": [
@@ -1224,7 +1233,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X) flap-statistics",
         "mode": "exec",
         "helps": [
@@ -1237,7 +1246,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors (A.B.C.D|X:X::X:X) flap-statistics",
         "mode": "exec",
         "helps": [
@@ -1249,7 +1258,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors (A.B.C.D|X:X::X:X) flap-statistics",
         "mode": "exec",
         "helps": [
@@ -1264,7 +1273,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors (A.B.C.D|X:X::X:X) flap-statistics",
         "mode": "exec",
         "helps": [
@@ -1278,7 +1287,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors (A.B.C.D|X:X::X:X) received prefix-filter",
         "mode": "exec",
         "helps": [
@@ -1294,7 +1303,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors (A.B.C.D|X:X::X:X) received prefix-filter",
         "mode": "exec",
         "helps": [
@@ -1309,7 +1318,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -1322,7 +1331,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -1334,7 +1343,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -1349,7 +1358,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -1363,7 +1372,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -1376,7 +1385,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -1389,7 +1398,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -1401,7 +1410,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -1416,7 +1425,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -1430,7 +1439,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -1443,7 +1452,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -1455,7 +1464,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -1468,7 +1477,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -1480,7 +1489,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -1493,7 +1502,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -1503,7 +1512,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -1515,7 +1524,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp rsclient (A.B.C.D|X:X::X:X) X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -1527,7 +1536,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD rsclient (A.B.C.D|X:X::X:X) X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -1541,7 +1550,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp rsclient (A.B.C.D|X:X::X:X) X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -1553,7 +1562,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD rsclient (A.B.C.D|X:X::X:X) X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -1567,7 +1576,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp views",
         "mode": "exec",
         "helps": [
@@ -1577,7 +1586,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show debugging bgp",
         "mode": "exec",
         "helps": [
@@ -1587,7 +1596,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show debugging ospf",
         "mode": "exec",
         "helps": [
@@ -1597,7 +1606,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show history",
         "mode": "exec",
         "helps": [
@@ -1606,7 +1615,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip access-list",
         "mode": "exec",
         "helps": [
@@ -1616,7 +1625,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip access-list (<1-99>|<100-199>|<1300-1999>|<2000-2699>|WORD)",
         "mode": "exec",
         "helps": [
@@ -1626,7 +1635,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip as-path-access-list WORD",
         "mode": "exec",
         "helps": [
@@ -1637,7 +1646,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip as-path-access-list",
         "mode": "exec",
         "helps": [
@@ -1647,7 +1656,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp",
         "mode": "exec",
         "helps": [
@@ -1657,7 +1666,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp attribute-info",
         "mode": "exec",
         "helps": [
@@ -1668,7 +1677,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp cidr-only",
         "mode": "exec",
         "helps": [
@@ -1679,7 +1688,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -1690,7 +1699,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -1701,7 +1710,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -1712,7 +1721,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -1723,7 +1732,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community",
         "mode": "exec",
         "helps": [
@@ -1734,7 +1743,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -1750,7 +1759,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -1765,7 +1774,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -1779,7 +1788,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -1792,7 +1801,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community-info",
         "mode": "exec",
         "helps": [
@@ -1803,7 +1812,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community-list (<1-500>|WORD)",
         "mode": "exec",
         "helps": [
@@ -1814,7 +1823,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp community-list (<1-500>|WORD) exact-match",
         "mode": "exec",
         "helps": [
@@ -1827,7 +1836,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp dampened-paths",
         "mode": "exec",
         "helps": [
@@ -1838,7 +1847,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp filter-list WORD",
         "mode": "exec",
         "helps": [
@@ -1850,7 +1859,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -1862,7 +1871,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics cidr-only",
         "mode": "exec",
         "helps": [
@@ -1874,7 +1883,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics filter-list WORD",
         "mode": "exec",
         "helps": [
@@ -1887,7 +1896,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -1899,7 +1908,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -1912,7 +1921,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics A.B.C.D/M longer-prefixes",
         "mode": "exec",
         "helps": [
@@ -1925,7 +1934,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics regexp .LINE",
         "mode": "exec",
         "helps": [
@@ -1938,7 +1947,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics route-map WORD",
         "mode": "exec",
         "helps": [
@@ -1951,7 +1960,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp flap-statistics",
         "mode": "exec",
         "helps": [
@@ -1962,7 +1971,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD ipv4 (unicast|multicast) rsclient summary",
         "mode": "exec",
         "helps": [
@@ -1978,7 +1987,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv4 (unicast|multicast) summary",
         "mode": "exec",
         "helps": [
@@ -1992,7 +2001,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD ipv4 (unicast|multicast) summary",
         "mode": "exec",
         "helps": [
@@ -2007,7 +2016,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors",
         "mode": "exec",
         "helps": [
@@ -2020,7 +2029,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors",
         "mode": "exec",
         "helps": [
@@ -2032,7 +2041,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD neighbors",
         "mode": "exec",
         "helps": [
@@ -2045,7 +2054,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD ipv6 neighbors (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2058,7 +2067,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp view WORD neighbors (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2070,7 +2079,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD neighbors (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2083,7 +2092,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD rsclient summary",
         "mode": "exec",
         "helps": [
@@ -2097,7 +2106,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD summary",
         "mode": "exec",
         "helps": [
@@ -2110,7 +2119,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast)",
         "mode": "exec",
         "helps": [
@@ -2120,7 +2129,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast)",
         "mode": "exec",
         "helps": [
@@ -2131,7 +2140,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) cidr-only",
         "mode": "exec",
         "helps": [
@@ -2144,7 +2153,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -2157,7 +2166,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -2170,7 +2179,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -2183,7 +2192,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -2196,7 +2205,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community",
         "mode": "exec",
         "helps": [
@@ -2209,7 +2218,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -2227,7 +2236,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -2244,7 +2253,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -2260,7 +2269,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -2275,7 +2284,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community-list (<1-500>|WORD)",
         "mode": "exec",
         "helps": [
@@ -2288,7 +2297,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) community-list (<1-500>|WORD) exact-match",
         "mode": "exec",
         "helps": [
@@ -2303,7 +2312,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) filter-list WORD",
         "mode": "exec",
         "helps": [
@@ -2317,7 +2326,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -2332,7 +2341,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) neighbors (A.B.C.D|X:X::X:X) prefix-counts",
         "mode": "exec",
         "helps": [
@@ -2347,7 +2356,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) neighbors (A.B.C.D|X:X::X:X) received prefix-filter",
         "mode": "exec",
         "helps": [
@@ -2363,7 +2372,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -2378,7 +2387,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -2393,7 +2402,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) paths",
         "mode": "exec",
         "helps": [
@@ -2406,7 +2415,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast) A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -2418,7 +2427,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -2431,7 +2440,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -2445,7 +2454,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) A.B.C.D/M longer-prefixes",
         "mode": "exec",
         "helps": [
@@ -2459,7 +2468,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) regexp .LINE",
         "mode": "exec",
         "helps": [
@@ -2473,7 +2482,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -2485,7 +2494,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -2498,7 +2507,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) route-map WORD",
         "mode": "exec",
         "helps": [
@@ -2512,7 +2521,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) rsclient summary",
         "mode": "exec",
         "helps": [
@@ -2526,7 +2535,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv4 (unicast|multicast) summary",
         "mode": "exec",
         "helps": [
@@ -2538,7 +2547,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) summary",
         "mode": "exec",
         "helps": [
@@ -2551,7 +2560,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X) dampened-routes",
         "mode": "exec",
         "helps": [
@@ -2564,7 +2573,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X) flap-statistics",
         "mode": "exec",
         "helps": [
@@ -2577,7 +2586,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X) prefix-counts",
         "mode": "exec",
         "helps": [
@@ -2590,7 +2599,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X) received prefix-filter",
         "mode": "exec",
         "helps": [
@@ -2604,7 +2613,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X) routes",
         "mode": "exec",
         "helps": [
@@ -2617,7 +2626,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors",
         "mode": "exec",
         "helps": [
@@ -2628,7 +2637,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors",
         "mode": "exec",
         "helps": [
@@ -2638,7 +2647,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) neighbors",
         "mode": "exec",
         "helps": [
@@ -2651,7 +2660,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors",
         "mode": "exec",
         "helps": [
@@ -2662,7 +2671,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all neighbors",
         "mode": "exec",
         "helps": [
@@ -2675,7 +2684,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn neighbors",
         "mode": "exec",
         "helps": [
@@ -2689,7 +2698,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp ipv6 neighbors (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2700,7 +2709,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show bgp neighbors (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2710,7 +2719,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp ipv4 (unicast|multicast) neighbors (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2723,7 +2732,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2734,7 +2743,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all neighbors A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -2748,7 +2757,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn neighbors A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -2762,7 +2771,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp paths",
         "mode": "exec",
         "helps": [
@@ -2773,7 +2782,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -2784,7 +2793,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -2796,7 +2805,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp A.B.C.D/M longer-prefixes",
         "mode": "exec",
         "helps": [
@@ -2808,7 +2817,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp regexp .LINE",
         "mode": "exec",
         "helps": [
@@ -2820,7 +2829,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -2831,7 +2840,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp route-map WORD",
         "mode": "exec",
         "helps": [
@@ -2843,7 +2852,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp rsclient summary",
         "mode": "exec",
         "helps": [
@@ -2855,7 +2864,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp scan",
         "mode": "exec",
         "helps": [
@@ -2866,7 +2875,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp scan detail",
         "mode": "exec",
         "helps": [
@@ -2878,7 +2887,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp summary",
         "mode": "exec",
         "helps": [
@@ -2889,7 +2898,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD",
         "mode": "exec",
         "helps": [
@@ -2901,7 +2910,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -2914,7 +2923,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD neighbors (A.B.C.D|X:X::X:X) advertised-routes",
         "mode": "exec",
         "helps": [
@@ -2929,7 +2938,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -2942,7 +2951,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD neighbors (A.B.C.D|X:X::X:X) received-routes",
         "mode": "exec",
         "helps": [
@@ -2957,7 +2966,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -2970,7 +2979,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -2983,7 +2992,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -2994,7 +3003,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD rsclient (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -3007,7 +3016,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp rsclient (A.B.C.D|X:X::X:X) A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -3020,7 +3029,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD rsclient (A.B.C.D|X:X::X:X) A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -3035,7 +3044,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp rsclient (A.B.C.D|X:X::X:X) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3048,7 +3057,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp view WORD rsclient (A.B.C.D|X:X::X:X) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3063,7 +3072,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all",
         "mode": "exec",
         "helps": [
@@ -3075,7 +3084,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all neighbors A.B.C.D advertised-routes",
         "mode": "exec",
         "helps": [
@@ -3090,7 +3099,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all neighbors A.B.C.D routes",
         "mode": "exec",
         "helps": [
@@ -3105,7 +3114,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -3118,7 +3127,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3131,7 +3140,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all summary",
         "mode": "exec",
         "helps": [
@@ -3144,7 +3153,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all tags",
         "mode": "exec",
         "helps": [
@@ -3157,7 +3166,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 all neighbors (A.B.C.D|X:X::X:X) prefix-counts",
         "mode": "exec",
         "helps": [
@@ -3172,7 +3181,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn",
         "mode": "exec",
         "helps": [
@@ -3185,7 +3194,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn neighbors A.B.C.D advertised-routes",
         "mode": "exec",
         "helps": [
@@ -3201,7 +3210,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn neighbors A.B.C.D routes",
         "mode": "exec",
         "helps": [
@@ -3217,7 +3226,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -3231,7 +3240,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3245,7 +3254,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn summary",
         "mode": "exec",
         "helps": [
@@ -3259,7 +3268,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip bgp vpnv4 rd ASN:nn_or_IP-address:nn tags",
         "mode": "exec",
         "helps": [
@@ -3273,7 +3282,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip community-list",
         "mode": "exec",
         "helps": [
@@ -3283,7 +3292,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip community-list (<1-500>|WORD)",
         "mode": "exec",
         "helps": [
@@ -3293,7 +3302,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip extcommunity-list",
         "mode": "exec",
         "helps": [
@@ -3303,7 +3312,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip extcommunity-list (<1-500>|WORD)",
         "mode": "exec",
         "helps": [
@@ -3313,7 +3322,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf",
         "mode": "exec",
         "helps": [
@@ -3323,7 +3332,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf border-routers",
         "mode": "exec",
         "helps": [
@@ -3334,7 +3343,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf database",
         "mode": "exec",
         "helps": [
@@ -3345,7 +3354,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf database (asbr-summary|external|network|router|summary|nssa-external|opaque-link|opaque-area|opaque-as) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3358,7 +3367,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf database (asbr-summary|external|network|router|summary|nssa-external|opaque-link|opaque-area|opaque-as) A.B.C.D (self-originate|)",
         "mode": "exec",
         "helps": [
@@ -3371,7 +3380,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf database (asbr-summary|external|network|router|summary|nssa-external|opaque-link|opaque-area|opaque-as) A.B.C.D adv-router A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3386,7 +3395,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf database (asbr-summary|external|network|router|summary|nssa-external|opaque-link|opaque-area|opaque-as|max-age|self-originate)",
         "mode": "exec",
         "helps": [
@@ -3397,7 +3406,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf database (asbr-summary|external|network|router|summary|nssa-external|opaque-link|opaque-area|opaque-as) (self-originate|)",
         "mode": "exec",
         "helps": [
@@ -3408,7 +3417,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf database (asbr-summary|external|network|router|summary|nssa-external|opaque-link|opaque-area|opaque-as) adv-router A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3422,7 +3431,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf interface [INTERFACE]",
         "mode": "exec",
         "helps": [
@@ -3434,7 +3443,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf neighbor",
         "mode": "exec",
         "helps": [
@@ -3445,7 +3454,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf neighbor all",
         "mode": "exec",
         "helps": [
@@ -3457,7 +3466,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf neighbor detail",
         "mode": "exec",
         "helps": [
@@ -3469,7 +3478,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf neighbor detail all",
         "mode": "exec",
         "helps": [
@@ -3482,7 +3491,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf neighbor A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -3494,7 +3503,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf neighbor IFNAME",
         "mode": "exec",
         "helps": [
@@ -3506,7 +3515,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf neighbor IFNAME detail",
         "mode": "exec",
         "helps": [
@@ -3519,7 +3528,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip ospf route",
         "mode": "exec",
         "helps": [
@@ -3530,7 +3539,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list",
         "mode": "exec",
         "helps": [
@@ -3540,7 +3549,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list detail",
         "mode": "exec",
         "helps": [
@@ -3551,7 +3560,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list detail WORD",
         "mode": "exec",
         "helps": [
@@ -3563,7 +3572,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -3574,7 +3583,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list WORD seq <1-4294967295>",
         "mode": "exec",
         "helps": [
@@ -3587,7 +3596,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list WORD A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -3599,7 +3608,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list WORD A.B.C.D/M first-match",
         "mode": "exec",
         "helps": [
@@ -3612,7 +3621,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list WORD A.B.C.D/M longer",
         "mode": "exec",
         "helps": [
@@ -3625,7 +3634,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list summary",
         "mode": "exec",
         "helps": [
@@ -3636,7 +3645,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ip prefix-list summary WORD",
         "mode": "exec",
         "helps": [
@@ -3648,7 +3657,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 access-list",
         "mode": "exec",
         "helps": [
@@ -3658,7 +3667,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 access-list WORD",
         "mode": "exec",
         "helps": [
@@ -3669,7 +3678,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp",
         "mode": "exec",
         "helps": [
@@ -3679,7 +3688,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3690,7 +3699,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3701,7 +3710,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3712,7 +3721,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3723,7 +3732,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community",
         "mode": "exec",
         "helps": [
@@ -3734,7 +3743,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -3750,7 +3759,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -3765,7 +3774,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -3779,7 +3788,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -3792,7 +3801,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community-list WORD",
         "mode": "exec",
         "helps": [
@@ -3804,7 +3813,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp community-list WORD exact-match",
         "mode": "exec",
         "helps": [
@@ -3817,7 +3826,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp filter-list WORD",
         "mode": "exec",
         "helps": [
@@ -3829,7 +3838,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -3840,7 +3849,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -3852,7 +3861,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp X:X::X:X/M longer-prefixes",
         "mode": "exec",
         "helps": [
@@ -3864,7 +3873,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp regexp .LINE",
         "mode": "exec",
         "helps": [
@@ -3876,7 +3885,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -3887,7 +3896,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 bgp summary",
         "mode": "exec",
         "helps": [
@@ -3898,7 +3907,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp",
         "mode": "exec",
         "helps": [
@@ -3908,7 +3917,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3919,7 +3928,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3930,7 +3939,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3941,7 +3950,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export)",
         "mode": "exec",
         "helps": [
@@ -3952,7 +3961,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community",
         "mode": "exec",
         "helps": [
@@ -3963,7 +3972,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -3979,7 +3988,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -3994,7 +4003,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export) (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -4008,7 +4017,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community (AA:NN|local-AS|no-advertise|no-export) exact-match",
         "mode": "exec",
         "helps": [
@@ -4021,7 +4030,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community-list WORD",
         "mode": "exec",
         "helps": [
@@ -4033,7 +4042,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp community-list WORD exact-match",
         "mode": "exec",
         "helps": [
@@ -4046,7 +4055,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp filter-list WORD",
         "mode": "exec",
         "helps": [
@@ -4058,7 +4067,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -4069,7 +4078,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -4081,7 +4090,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp X:X::X:X/M longer-prefixes",
         "mode": "exec",
         "helps": [
@@ -4093,7 +4102,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp regexp .LINE",
         "mode": "exec",
         "helps": [
@@ -4105,7 +4114,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp X:X::X:X",
         "mode": "exec",
         "helps": [
@@ -4116,7 +4125,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 mbgp summary",
         "mode": "exec",
         "helps": [
@@ -4127,7 +4136,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6",
         "mode": "exec",
         "helps": [
@@ -4137,7 +4146,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 area A.B.C.D spf tree",
         "mode": "exec",
         "helps": [
@@ -4151,7 +4160,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 border-routers",
         "mode": "exec",
         "helps": [
@@ -4162,7 +4171,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 border-routers (A.B.C.D|detail)",
         "mode": "exec",
         "helps": [
@@ -4173,7 +4182,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database",
         "mode": "exec",
         "helps": [
@@ -4184,7 +4193,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4195,7 +4204,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database adv-router A.B.C.D linkstate-id A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4210,7 +4219,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database adv-router A.B.C.D linkstate-id A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4225,7 +4234,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database * A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4238,7 +4247,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database * A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4251,7 +4260,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database linkstate-id A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4264,7 +4273,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database linkstate-id A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4277,7 +4286,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database * A.B.C.D A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4291,7 +4300,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database * A.B.C.D A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4305,7 +4314,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database * * A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4319,7 +4328,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database * * A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4333,7 +4342,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database adv-router A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4346,7 +4355,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database adv-router A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4359,7 +4368,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database self-originated",
         "mode": "exec",
         "helps": [
@@ -4370,7 +4379,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database self-originated (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4382,7 +4391,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix)",
         "mode": "exec",
         "helps": [
@@ -4393,7 +4402,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4404,7 +4413,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) adv-router A.B.C.D linkstate-id A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4420,7 +4429,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) adv-router A.B.C.D linkstate-id A.B.C.D (dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4436,7 +4445,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4449,7 +4458,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4462,7 +4471,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) linkstate-id A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4476,7 +4485,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) linkstate-id A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4490,7 +4499,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) A.B.C.D A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4504,7 +4513,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) A.B.C.D A.B.C.D (dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4518,7 +4527,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) A.B.C.D self-originated",
         "mode": "exec",
         "helps": [
@@ -4532,7 +4541,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) A.B.C.D self-originated (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4546,7 +4555,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) * A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4560,7 +4569,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) * A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4574,7 +4583,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) adv-router A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4588,7 +4597,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) adv-router A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4602,7 +4611,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) self-originated",
         "mode": "exec",
         "helps": [
@@ -4615,7 +4624,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) self-originated (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4628,7 +4637,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) self-originated linkstate-id A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4643,7 +4652,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 database (router|network|inter-prefix|inter-router|as-external|group-membership|type-7|link|intra-prefix) self-originated linkstate-id A.B.C.D (detail|dump|internal)",
         "mode": "exec",
         "helps": [
@@ -4658,7 +4667,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface",
         "mode": "exec",
         "helps": [
@@ -4669,7 +4678,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface IFNAME",
         "mode": "exec",
         "helps": [
@@ -4681,7 +4690,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface IFNAME prefix",
         "mode": "exec",
         "helps": [
@@ -4694,7 +4703,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface IFNAME prefix (X:X::X:X|X:X::X:X/M|detail)",
         "mode": "exec",
         "helps": [
@@ -4707,7 +4716,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface IFNAME prefix X:X::X:X/M (match|detail)",
         "mode": "exec",
         "helps": [
@@ -4721,7 +4730,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface prefix",
         "mode": "exec",
         "helps": [
@@ -4733,7 +4742,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface prefix (X:X::X:X|X:X::X:X/M|detail)",
         "mode": "exec",
         "helps": [
@@ -4745,7 +4754,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 interface prefix X:X::X:X/M (match|detail)",
         "mode": "exec",
         "helps": [
@@ -4758,7 +4767,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 linkstate",
         "mode": "exec",
         "helps": [
@@ -4769,7 +4778,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 linkstate network A.B.C.D A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4783,7 +4792,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 linkstate router A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4796,7 +4805,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 linkstate detail",
         "mode": "exec",
         "helps": [
@@ -4807,7 +4816,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 neighbor",
         "mode": "exec",
         "helps": [
@@ -4818,7 +4827,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 neighbor (detail|drchoice)",
         "mode": "exec",
         "helps": [
@@ -4829,7 +4838,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 redistribute",
         "mode": "exec",
         "helps": [
@@ -4840,7 +4849,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route",
         "mode": "exec",
         "helps": [
@@ -4851,7 +4860,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route (X:X::X:X|X:X::X:X/M|detail|summary)",
         "mode": "exec",
         "helps": [
@@ -4862,7 +4871,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route (intra-area|inter-area|external-1|external-2)",
         "mode": "exec",
         "helps": [
@@ -4873,7 +4882,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route X:X::X:X/M longer",
         "mode": "exec",
         "helps": [
@@ -4886,7 +4895,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route X:X::X:X/M match",
         "mode": "exec",
         "helps": [
@@ -4899,7 +4908,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route X:X::X:X/M longer detail",
         "mode": "exec",
         "helps": [
@@ -4913,7 +4922,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route X:X::X:X/M match detail",
         "mode": "exec",
         "helps": [
@@ -4927,7 +4936,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 route (intra-area|inter-area|external-1|external-2) detail",
         "mode": "exec",
         "helps": [
@@ -4940,7 +4949,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 simulate spf-tree A.B.C.D area A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -4953,7 +4962,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 ospf6 spf tree",
         "mode": "exec",
         "helps": [
@@ -4965,7 +4974,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list",
         "mode": "exec",
         "helps": [
@@ -4975,7 +4984,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list detail",
         "mode": "exec",
         "helps": [
@@ -4986,7 +4995,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list detail WORD",
         "mode": "exec",
         "helps": [
@@ -4998,7 +5007,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -5009,7 +5018,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list WORD seq <1-4294967295>",
         "mode": "exec",
         "helps": [
@@ -5022,7 +5031,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list WORD X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -5034,7 +5043,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list WORD X:X::X:X/M first-match",
         "mode": "exec",
         "helps": [
@@ -5047,7 +5056,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list WORD X:X::X:X/M longer",
         "mode": "exec",
         "helps": [
@@ -5060,7 +5069,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list summary",
         "mode": "exec",
         "helps": [
@@ -5071,7 +5080,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show ipv6 prefix-list summary WORD",
         "mode": "exec",
         "helps": [
@@ -5083,7 +5092,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show logging",
         "mode": "exec",
         "helps": [
@@ -5092,7 +5101,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory",
         "mode": "exec",
         "helps": [
@@ -5101,7 +5110,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory all",
         "mode": "exec",
         "helps": [
@@ -5111,7 +5120,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory babel",
         "mode": "exec",
         "helps": [
@@ -5121,7 +5130,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory bgp",
         "mode": "exec",
         "helps": [
@@ -5131,7 +5140,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory isis",
         "mode": "exec",
         "helps": [
@@ -5141,7 +5150,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory lib",
         "mode": "exec",
         "helps": [
@@ -5151,7 +5160,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory ospf",
         "mode": "exec",
         "helps": [
@@ -5161,7 +5170,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory ospf6",
         "mode": "exec",
         "helps": [
@@ -5171,7 +5180,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory pim",
         "mode": "exec",
         "helps": [
@@ -5181,7 +5190,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory rip",
         "mode": "exec",
         "helps": [
@@ -5191,7 +5200,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory ripng",
         "mode": "exec",
         "helps": [
@@ -5201,7 +5210,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show memory zebra",
         "mode": "exec",
         "helps": [
@@ -5211,7 +5220,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show mpls-te interface [INTERFACE]",
         "mode": "exec",
         "helps": [
@@ -5222,7 +5231,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show mpls-te router",
         "mode": "exec",
         "helps": [
@@ -5232,7 +5241,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show startup-config",
         "mode": "exec",
         "helps": [
@@ -5241,7 +5250,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show thread cpu [FILTER]",
         "mode": "exec",
         "helps": [
@@ -5252,7 +5261,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show version",
         "mode": "exec",
         "helps": [
@@ -5261,7 +5270,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show version ospf6",
         "mode": "exec",
         "helps": [
@@ -5270,7 +5279,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show work-queues",
         "mode": "exec",
         "helps": [
@@ -5279,7 +5288,7 @@ const showCmdSpec = `
         ]
     },
     {
-        "name": "quagga_show",
+        "name": "vty_show",
         "line": "show zebra",
         "mode": "exec",
         "helps": [
@@ -5293,7 +5302,7 @@ const showCmdSpec = `
 const execCmdSpec = `
 [
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp * in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5305,7 +5314,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 * in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5318,7 +5327,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp * rsclient",
         "mode": "exec",
         "helps": [
@@ -5329,7 +5338,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 * rsclient",
         "mode": "exec",
         "helps": [
@@ -5341,7 +5350,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 view WORD * rsclient",
         "mode": "exec",
         "helps": [
@@ -5355,7 +5364,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp view WORD * rsclient",
         "mode": "exec",
         "helps": [
@@ -5368,7 +5377,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp * soft",
         "mode": "exec",
         "helps": [
@@ -5379,7 +5388,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 * soft",
         "mode": "exec",
         "helps": [
@@ -5391,7 +5400,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp view WORD * soft",
         "mode": "exec",
         "helps": [
@@ -5404,7 +5413,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp * in",
         "mode": "exec",
         "helps": [
@@ -5415,7 +5424,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp * soft in",
         "mode": "exec",
         "helps": [
@@ -5427,7 +5436,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 * in",
         "mode": "exec",
         "helps": [
@@ -5439,7 +5448,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 * soft in",
         "mode": "exec",
         "helps": [
@@ -5452,7 +5461,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp view WORD * soft in",
         "mode": "exec",
         "helps": [
@@ -5466,7 +5475,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp * out",
         "mode": "exec",
         "helps": [
@@ -5477,7 +5486,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp * soft out",
         "mode": "exec",
         "helps": [
@@ -5489,7 +5498,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 * out",
         "mode": "exec",
         "helps": [
@@ -5501,7 +5510,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 * soft out",
         "mode": "exec",
         "helps": [
@@ -5514,7 +5523,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp view WORD * soft out",
         "mode": "exec",
         "helps": [
@@ -5528,7 +5537,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp <1-4294967295> in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5540,7 +5549,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 <1-4294967295> in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5553,7 +5562,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp <1-4294967295> soft",
         "mode": "exec",
         "helps": [
@@ -5564,7 +5573,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 <1-4294967295> soft",
         "mode": "exec",
         "helps": [
@@ -5576,7 +5585,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp <1-4294967295> in",
         "mode": "exec",
         "helps": [
@@ -5587,7 +5596,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp <1-4294967295> soft in",
         "mode": "exec",
         "helps": [
@@ -5599,7 +5608,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 <1-4294967295> in",
         "mode": "exec",
         "helps": [
@@ -5611,7 +5620,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 <1-4294967295> soft in",
         "mode": "exec",
         "helps": [
@@ -5624,7 +5633,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp <1-4294967295> out",
         "mode": "exec",
         "helps": [
@@ -5635,7 +5644,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp <1-4294967295> soft out",
         "mode": "exec",
         "helps": [
@@ -5647,7 +5656,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 <1-4294967295> out",
         "mode": "exec",
         "helps": [
@@ -5659,7 +5668,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 <1-4294967295> soft out",
         "mode": "exec",
         "helps": [
@@ -5672,7 +5681,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp external in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5684,7 +5693,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 external in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5697,7 +5706,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp external soft",
         "mode": "exec",
         "helps": [
@@ -5708,7 +5717,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 external soft",
         "mode": "exec",
         "helps": [
@@ -5720,7 +5729,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp external in",
         "mode": "exec",
         "helps": [
@@ -5731,7 +5740,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp external soft in",
         "mode": "exec",
         "helps": [
@@ -5743,7 +5752,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 external WORD in",
         "mode": "exec",
         "helps": [
@@ -5755,7 +5764,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 external soft in",
         "mode": "exec",
         "helps": [
@@ -5768,7 +5777,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp external out",
         "mode": "exec",
         "helps": [
@@ -5779,7 +5788,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp external soft out",
         "mode": "exec",
         "helps": [
@@ -5791,7 +5800,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 external WORD out",
         "mode": "exec",
         "helps": [
@@ -5803,7 +5812,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 external soft out",
         "mode": "exec",
         "helps": [
@@ -5816,7 +5825,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 peer-group WORD in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5830,7 +5839,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp peer-group WORD in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5843,7 +5852,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 peer-group WORD soft",
         "mode": "exec",
         "helps": [
@@ -5856,7 +5865,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp peer-group WORD soft",
         "mode": "exec",
         "helps": [
@@ -5868,7 +5877,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 peer-group WORD in",
         "mode": "exec",
         "helps": [
@@ -5881,7 +5890,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 peer-group WORD soft in",
         "mode": "exec",
         "helps": [
@@ -5895,7 +5904,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp peer-group WORD in",
         "mode": "exec",
         "helps": [
@@ -5907,7 +5916,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp peer-group WORD soft in",
         "mode": "exec",
         "helps": [
@@ -5920,7 +5929,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 peer-group WORD out",
         "mode": "exec",
         "helps": [
@@ -5933,7 +5942,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 peer-group WORD soft out",
         "mode": "exec",
         "helps": [
@@ -5947,7 +5956,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp peer-group WORD out",
         "mode": "exec",
         "helps": [
@@ -5959,7 +5968,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp peer-group WORD soft out",
         "mode": "exec",
         "helps": [
@@ -5972,7 +5981,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5984,7 +5993,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -5997,7 +6006,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X) rsclient",
         "mode": "exec",
         "helps": [
@@ -6008,7 +6017,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X) rsclient",
         "mode": "exec",
         "helps": [
@@ -6020,7 +6029,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 view WORD (A.B.C.D|X:X::X:X) rsclient",
         "mode": "exec",
         "helps": [
@@ -6034,7 +6043,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp view WORD (A.B.C.D|X:X::X:X) rsclient",
         "mode": "exec",
         "helps": [
@@ -6047,7 +6056,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X) soft",
         "mode": "exec",
         "helps": [
@@ -6058,7 +6067,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X) soft",
         "mode": "exec",
         "helps": [
@@ -6070,7 +6079,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X) in",
         "mode": "exec",
         "helps": [
@@ -6081,7 +6090,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X) soft in",
         "mode": "exec",
         "helps": [
@@ -6093,7 +6102,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X) in",
         "mode": "exec",
         "helps": [
@@ -6105,7 +6114,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X) soft in",
         "mode": "exec",
         "helps": [
@@ -6118,7 +6127,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X) out",
         "mode": "exec",
         "helps": [
@@ -6129,7 +6138,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X) soft out",
         "mode": "exec",
         "helps": [
@@ -6141,7 +6150,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X) out",
         "mode": "exec",
         "helps": [
@@ -6153,7 +6162,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X) soft out",
         "mode": "exec",
         "helps": [
@@ -6166,7 +6175,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp *",
         "mode": "exec",
         "helps": [
@@ -6176,7 +6185,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 *",
         "mode": "exec",
         "helps": [
@@ -6187,7 +6196,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp view WORD *",
         "mode": "exec",
         "helps": [
@@ -6199,7 +6208,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp *",
         "mode": "exec",
         "helps": [
@@ -6210,7 +6219,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD *",
         "mode": "exec",
         "helps": [
@@ -6223,7 +6232,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -6236,7 +6245,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -6251,7 +6260,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * ipv4 (unicast|multicast) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -6266,7 +6275,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * ipv4 (unicast|multicast) soft",
         "mode": "exec",
         "helps": [
@@ -6280,7 +6289,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * ipv4 (unicast|multicast) in",
         "mode": "exec",
         "helps": [
@@ -6294,7 +6303,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * ipv4 (unicast|multicast) soft in",
         "mode": "exec",
         "helps": [
@@ -6309,7 +6318,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * ipv4 (unicast|multicast) out",
         "mode": "exec",
         "helps": [
@@ -6323,7 +6332,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * ipv4 (unicast|multicast) soft out",
         "mode": "exec",
         "helps": [
@@ -6338,7 +6347,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * rsclient",
         "mode": "exec",
         "helps": [
@@ -6350,7 +6359,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * rsclient",
         "mode": "exec",
         "helps": [
@@ -6364,7 +6373,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * soft",
         "mode": "exec",
         "helps": [
@@ -6376,7 +6385,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * soft",
         "mode": "exec",
         "helps": [
@@ -6390,7 +6399,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * in",
         "mode": "exec",
         "helps": [
@@ -6402,7 +6411,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * soft in",
         "mode": "exec",
         "helps": [
@@ -6415,7 +6424,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * soft in",
         "mode": "exec",
         "helps": [
@@ -6430,7 +6439,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * out",
         "mode": "exec",
         "helps": [
@@ -6442,7 +6451,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * soft out",
         "mode": "exec",
         "helps": [
@@ -6455,7 +6464,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * soft out",
         "mode": "exec",
         "helps": [
@@ -6470,7 +6479,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * vpnv4 unicast soft",
         "mode": "exec",
         "helps": [
@@ -6484,7 +6493,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * vpnv4 unicast in",
         "mode": "exec",
         "helps": [
@@ -6498,7 +6507,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * vpnv4 unicast soft in",
         "mode": "exec",
         "helps": [
@@ -6513,7 +6522,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * vpnv4 unicast out",
         "mode": "exec",
         "helps": [
@@ -6527,7 +6536,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp * vpnv4 unicast soft out",
         "mode": "exec",
         "helps": [
@@ -6542,7 +6551,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp <1-4294967295>",
         "mode": "exec",
         "helps": [
@@ -6552,7 +6561,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 <1-4294967295>",
         "mode": "exec",
         "helps": [
@@ -6563,7 +6572,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295>",
         "mode": "exec",
         "helps": [
@@ -6574,7 +6583,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -6587,7 +6596,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> ipv4 (unicast|multicast) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -6602,7 +6611,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> ipv4 (unicast|multicast) soft",
         "mode": "exec",
         "helps": [
@@ -6616,7 +6625,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> ipv4 (unicast|multicast) in",
         "mode": "exec",
         "helps": [
@@ -6630,7 +6639,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> ipv4 (unicast|multicast) soft in",
         "mode": "exec",
         "helps": [
@@ -6645,7 +6654,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> ipv4 (unicast|multicast) out",
         "mode": "exec",
         "helps": [
@@ -6659,7 +6668,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> ipv4 (unicast|multicast) soft out",
         "mode": "exec",
         "helps": [
@@ -6674,7 +6683,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> soft",
         "mode": "exec",
         "helps": [
@@ -6686,7 +6695,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> in",
         "mode": "exec",
         "helps": [
@@ -6698,7 +6707,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> soft in",
         "mode": "exec",
         "helps": [
@@ -6711,7 +6720,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> out",
         "mode": "exec",
         "helps": [
@@ -6723,7 +6732,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> soft out",
         "mode": "exec",
         "helps": [
@@ -6736,7 +6745,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> vpnv4 unicast soft",
         "mode": "exec",
         "helps": [
@@ -6750,7 +6759,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> vpnv4 unicast in",
         "mode": "exec",
         "helps": [
@@ -6764,7 +6773,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> vpnv4 unicast soft in",
         "mode": "exec",
         "helps": [
@@ -6779,7 +6788,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> vpnv4 unicast out",
         "mode": "exec",
         "helps": [
@@ -6793,7 +6802,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp <1-4294967295> vpnv4 unicast soft out",
         "mode": "exec",
         "helps": [
@@ -6808,7 +6817,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp dampening",
         "mode": "exec",
         "helps": [
@@ -6819,7 +6828,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp dampening A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -6831,7 +6840,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp dampening A.B.C.D A.B.C.D",
         "mode": "exec",
         "helps": [
@@ -6844,7 +6853,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp dampening A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -6856,7 +6865,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp external",
         "mode": "exec",
         "helps": [
@@ -6866,7 +6875,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 external",
         "mode": "exec",
         "helps": [
@@ -6877,7 +6886,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external",
         "mode": "exec",
         "helps": [
@@ -6888,7 +6897,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -6901,7 +6910,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external ipv4 (unicast|multicast) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -6916,7 +6925,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external ipv4 (unicast|multicast) soft",
         "mode": "exec",
         "helps": [
@@ -6930,7 +6939,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external ipv4 (unicast|multicast) in",
         "mode": "exec",
         "helps": [
@@ -6944,7 +6953,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external ipv4 (unicast|multicast) soft in",
         "mode": "exec",
         "helps": [
@@ -6959,7 +6968,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external ipv4 (unicast|multicast) out",
         "mode": "exec",
         "helps": [
@@ -6973,7 +6982,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external ipv4 (unicast|multicast) soft out",
         "mode": "exec",
         "helps": [
@@ -6988,7 +6997,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external soft",
         "mode": "exec",
         "helps": [
@@ -7000,7 +7009,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external in",
         "mode": "exec",
         "helps": [
@@ -7012,7 +7021,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external soft in",
         "mode": "exec",
         "helps": [
@@ -7025,7 +7034,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external out",
         "mode": "exec",
         "helps": [
@@ -7037,7 +7046,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp external soft out",
         "mode": "exec",
         "helps": [
@@ -7050,7 +7059,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * ipv4 (unicast|multicast) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -7064,7 +7073,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * ipv4 (unicast|multicast) soft",
         "mode": "exec",
         "helps": [
@@ -7080,7 +7089,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * ipv4 (unicast|multicast) soft in",
         "mode": "exec",
         "helps": [
@@ -7097,7 +7106,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD * ipv4 (unicast|multicast) soft out",
         "mode": "exec",
         "helps": [
@@ -7113,7 +7122,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -7122,7 +7131,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -7132,7 +7141,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp (A.B.C.D|X:X::X:X)",
         "mode": "exec",
         "helps": [
@@ -7142,7 +7151,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp ipv6 peer-group WORD",
         "mode": "exec",
         "helps": [
@@ -7154,7 +7163,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear bgp peer-group WORD",
         "mode": "exec",
         "helps": [
@@ -7165,7 +7174,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD",
         "mode": "exec",
         "helps": [
@@ -7177,7 +7186,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -7191,7 +7200,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD ipv4 (unicast|multicast) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -7207,7 +7216,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD ipv4 (unicast|multicast) soft",
         "mode": "exec",
         "helps": [
@@ -7222,7 +7231,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD ipv4 (unicast|multicast) in",
         "mode": "exec",
         "helps": [
@@ -7237,7 +7246,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD ipv4 (unicast|multicast) soft in",
         "mode": "exec",
         "helps": [
@@ -7253,7 +7262,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD ipv4 (unicast|multicast) out",
         "mode": "exec",
         "helps": [
@@ -7268,7 +7277,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD ipv4 (unicast|multicast) soft out",
         "mode": "exec",
         "helps": [
@@ -7284,7 +7293,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD soft",
         "mode": "exec",
         "helps": [
@@ -7297,7 +7306,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD in",
         "mode": "exec",
         "helps": [
@@ -7310,7 +7319,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD soft in",
         "mode": "exec",
         "helps": [
@@ -7324,7 +7333,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD out",
         "mode": "exec",
         "helps": [
@@ -7337,7 +7346,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp peer-group WORD soft out",
         "mode": "exec",
         "helps": [
@@ -7351,7 +7360,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -7364,7 +7373,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D ipv4 (unicast|multicast) in prefix-filter",
         "mode": "exec",
         "helps": [
@@ -7379,7 +7388,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D ipv4 (unicast|multicast) soft",
         "mode": "exec",
         "helps": [
@@ -7393,7 +7402,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D ipv4 (unicast|multicast) in",
         "mode": "exec",
         "helps": [
@@ -7407,7 +7416,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D ipv4 (unicast|multicast) soft in",
         "mode": "exec",
         "helps": [
@@ -7422,7 +7431,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D ipv4 (unicast|multicast) out",
         "mode": "exec",
         "helps": [
@@ -7436,7 +7445,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D ipv4 (unicast|multicast) soft out",
         "mode": "exec",
         "helps": [
@@ -7451,7 +7460,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp (A.B.C.D|X:X::X:X) rsclient",
         "mode": "exec",
         "helps": [
@@ -7463,7 +7472,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp view WORD (A.B.C.D|X:X::X:X) rsclient",
         "mode": "exec",
         "helps": [
@@ -7477,7 +7486,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D soft",
         "mode": "exec",
         "helps": [
@@ -7489,7 +7498,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D in",
         "mode": "exec",
         "helps": [
@@ -7501,7 +7510,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D soft in",
         "mode": "exec",
         "helps": [
@@ -7514,7 +7523,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D out",
         "mode": "exec",
         "helps": [
@@ -7526,7 +7535,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D soft out",
         "mode": "exec",
         "helps": [
@@ -7539,7 +7548,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D vpnv4 unicast soft",
         "mode": "exec",
         "helps": [
@@ -7553,7 +7562,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D vpnv4 unicast in",
         "mode": "exec",
         "helps": [
@@ -7567,7 +7576,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D vpnv4 unicast soft in",
         "mode": "exec",
         "helps": [
@@ -7582,7 +7591,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D vpnv4 unicast out",
         "mode": "exec",
         "helps": [
@@ -7596,7 +7605,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip bgp A.B.C.D vpnv4 unicast soft out",
         "mode": "exec",
         "helps": [
@@ -7611,7 +7620,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip prefix-list",
         "mode": "exec",
         "helps": [
@@ -7621,7 +7630,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -7632,7 +7641,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ip prefix-list WORD A.B.C.D/M",
         "mode": "exec",
         "helps": [
@@ -7644,7 +7653,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ipv6 prefix-list",
         "mode": "exec",
         "helps": [
@@ -7654,7 +7663,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ipv6 prefix-list WORD",
         "mode": "exec",
         "helps": [
@@ -7665,7 +7674,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear ipv6 prefix-list WORD X:X::X:X/M",
         "mode": "exec",
         "helps": [
@@ -7677,7 +7686,7 @@ const execCmdSpec = `
         ]
     },
     {
-        "name": "quagga_exec",
+        "name": "vty_exec",
         "line": "clear thread cpu [FILTER]",
         "mode": "exec",
         "helps": [
