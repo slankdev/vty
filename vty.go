@@ -52,21 +52,22 @@ func quaggaRuleSort(rules []string) {
 	sort.Sort(RuleSlice(rules))
 }
 
-func quaggaVtysh(cmds ...string) *string {
+// TODO: generalization
+func kamueeVtysh(cmds ...string) *string {
 	cmdArgs := []string{}
 	cmdArgs = append(cmdArgs, "kamuee_vtysh.py")
 	for _, c := range cmds {
 		cmdArgs = append(cmdArgs, "-c", c)
-		fmt.Println("quaggaVtysh: ", c)
+		fmt.Println("kamueeVtysh: ", c)
 	}
 	out, err := exec.Command("sudo", cmdArgs...).CombinedOutput()
 	if err != nil {
 		s := fmt.Sprint(err)
-		fmt.Println("quaggaVtysh: ", s)
+		fmt.Println("kamueeVtysh: ", s)
 		return &s
 	}
 	s := string(out)
-	fmt.Println("quaggaVtysh: ", s)
+	fmt.Println("kamueeVtysh: ", s)
 	return &s
 }
 
@@ -276,6 +277,7 @@ func (config *quaggaConfigStateNode) values(path []string) []string {
 	return values
 }
 
+// TODO: always valid
 func quaggaConfigValid(f io.Writer) bool {
 	valid := true
 	return valid

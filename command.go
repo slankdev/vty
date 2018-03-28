@@ -9,11 +9,11 @@ var execCmdMap = map[string]func(string) *string{
 }
 
 func vtyShow(line string) *string {
-	return quaggaVtysh(line)
+	return kamueeVtysh(line)
 }
 
 func vtyExec(line string) *string {
-	return quaggaVtysh(line)
+	return kamueeVtysh(line)
 }
 
 const showCmdSpec = `

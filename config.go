@@ -56,11 +56,11 @@ func quaggaInterfacesInterfaceIpv4OspfAuthenticationMd5KeyIdMd5Key(Cmd int, Args
 	//interfaces interface WORD ipv4 ospf authentication md5 key-id WORD md5-key WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf message-digest-key ", Args[1], " md5 ", Args[2]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("no ip ospf message-digest-key ", Args[1]))
 	}
@@ -83,12 +83,12 @@ func quaggaInterfacesInterfaceIpv4OspfAuthenticationMd5(Cmd int, Args cmd.Args) 
 	//interfaces interface WORD ipv4 ospf authentication md5
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf authentication",
 			"ip ospf authentication message-digest")
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf authentication")
 	}
@@ -124,13 +124,13 @@ func quaggaInterfacesInterfaceIpv4OspfAuthenticationPlaintextPassword(Cmd int, A
 	//interfaces interface WORD ipv4 ospf authentication plaintext-password WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf authentication",
 			"ip ospf authentication",
 			fmt.Sprint("ip ospf authentication-key ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf authentication",
 			"no ip ospf authentication-key")
@@ -151,11 +151,11 @@ func quaggaInterfacesInterfaceIpv4OspfBandwidth(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv4 ospf bandwidth WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("bandwidth ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no bandwidth ")
 	}
@@ -179,11 +179,11 @@ func quaggaInterfacesInterfaceIpv4OspfCost(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv4 ospf cost WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf cost ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf cost")
 	}
@@ -204,11 +204,11 @@ func quaggaInterfacesInterfaceIpv4OspfDeadInterval(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv4 ospf dead-interval WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf dead-interval ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf dead-interval")
 	}
@@ -229,11 +229,11 @@ func quaggaInterfacesInterfaceIpv4OspfHelloInterval(Cmd int, Args cmd.Args) int 
 	//interfaces interface WORD ipv4 ospf hello-interval WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf hello-interval ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf hello-interval")
 	}
@@ -249,11 +249,11 @@ func quaggaInterfacesInterfaceIpv4OspfMtuIgnore(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv4 ospf mtu-ignore
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ip ospf mtu-ignore")
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf mtu-ignore")
 	}
@@ -277,11 +277,11 @@ func quaggaInterfacesInterfaceIpv4OspfNetwork(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv4 ospf network WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf network ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf network")
 	}
@@ -314,11 +314,11 @@ func quaggaInterfacesInterfaceIpv4OspfPriority(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv4 ospf priority WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf priority ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf priority")
 	}
@@ -341,11 +341,11 @@ func quaggaInterfacesInterfaceIpv4OspfRetransmitInterval(Cmd int, Args cmd.Args)
 	//interfaces interface WORD ipv4 ospf retransmit-interval WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf retransmit-interval ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf retransmit-interval")
 	}
@@ -366,11 +366,11 @@ func quaggaInterfacesInterfaceIpv4OspfTransmitDelay(Cmd int, Args cmd.Args) int 
 	//interfaces interface WORD ipv4 ospf transmit-delay WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ip ospf transmit-delay ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ip ospf transmit-delay")
 	}
@@ -391,11 +391,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3Cost(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv6 ospfv3 cost WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 cost ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ipv6 ospf6 cost")
 	}
@@ -418,11 +418,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3DeadInterval(Cmd int, Args cmd.Args) int
 	//interfaces interface WORD ipv6 ospfv3 dead-interval WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 dead-interval ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 dead-interval 40")
 	}
@@ -445,11 +445,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3HelloInterval(Cmd int, Args cmd.Args) in
 	//interfaces interface WORD ipv6 ospfv3 hello-interval WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 hello-interval ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 hello-interval 10")
 	}
@@ -469,11 +469,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3Ifmtu(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv6 ospfv3 ifmtu WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 ifmtu ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ipv6 ospf6 ifmtu")
 	}
@@ -494,11 +494,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3InstanceId(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv6 ospfv3 instance-id WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 instance-id ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 instance-id 0")
 	}
@@ -515,11 +515,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3MtuIgnore(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv6 ospfv3 mtu-ignore
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 mtu-ignore")
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ipv6 ospf6 mtu-ignore")
 	}
@@ -547,11 +547,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3Passive(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv6 ospfv3 passive
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 passive")
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"no ipv6 ospf6 passive")
 	}
@@ -572,11 +572,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3Priority(Cmd int, Args cmd.Args) int {
 	//interfaces interface WORD ipv6 ospfv3 priority WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 priority ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 priority 1")
 	}
@@ -599,11 +599,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3RetransmitInterval(Cmd int, Args cmd.Arg
 	//interfaces interface WORD ipv6 ospfv3 retransmit-interval WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 retransmit-interval ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 retransmit-interval 5")
 	}
@@ -626,11 +626,11 @@ func quaggaInterfacesInterfaceIpv6Ospfv3TransmitDelay(Cmd int, Args cmd.Args) in
 	//interfaces interface WORD ipv6 ospfv3 transmit-delay WORD
 	switch Cmd {
 	case cmd.Set:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			fmt.Sprint("ipv6 ospf6 transmit-delay ", Args[1]))
 	case cmd.Delete:
-		quaggaVtysh("configure terminal",
+		kamueeVtysh("configure terminal",
 			fmt.Sprint("interface ", Args[0]),
 			"ipv6 ospf6 transmit-delay 1")
 	}
