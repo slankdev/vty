@@ -278,23 +278,6 @@ func (config *quaggaConfigStateNode) values(path []string) []string {
 
 func quaggaConfigValid(f io.Writer) bool {
 	valid := true
-
-	if !quaggaConfigValidInterfacesOspf(f) {
-		valid = false
-	}
-
-	if !quaggaConfigValidPolicy(f) {
-		valid = false
-	}
-
-	if !quaggaConfigValidBgp(f) {
-		valid = false
-	}
-
-	if !quaggaConfigValidOspf(f) {
-		valid = false
-	}
-
 	return valid
 }
 
