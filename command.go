@@ -133,6 +133,30 @@ const showCmdSpec = `
             "Specify port number"
         ]
     },
+    {
+        "name": "vty_show",
+        "line": "show acl ipv4 policy list",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "Access Control List",
+            "IPv4 ACL",
+            "ACL policy",
+            "List ACL policy"
+        ]
+    },
+    {
+        "name": "vty_show",
+        "line": "show acl ipv6 policy list",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "Access Control List",
+            "IPv6 ACL",
+            "ACL policy",
+            "List ACL policy"
+        ]
+    },
 
     {
         "name": "vty_show",

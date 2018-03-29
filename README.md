@@ -38,6 +38,8 @@ $ show memory mempool all
 $ show memory mempool arp
 $ show memory mempool WORD
 $ show acl port WORD
+$ show acl ipv4 policy list
+$ show acl ipv6 policy list
 $ show running status
 $ show version
 ```
