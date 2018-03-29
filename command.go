@@ -1,19 +1,19 @@
 package vty
 
 var showCmdMap = map[string]func(string) *string{
-	"vty_show": vtyShow,
+  "vty_show": vtyShow,
 }
 
 var execCmdMap = map[string]func(string) *string{
-	"vty_exec": vtyExec,
+  "vty_exec": vtyExec,
 }
 
 func vtyShow(line string) *string {
-	return kamueeVtysh(line)
+  return kamueeVtysh(line)
 }
 
 func vtyExec(line string) *string {
-	return kamueeVtysh(line)
+  return kamueeVtysh(line)
 }
 
 const showCmdSpec = `
@@ -39,11 +39,22 @@ const showCmdSpec = `
     },
     {
         "name": "vty_show",
-        "line": "show running-config",
+        "line": "show port WORD",
         "mode": "exec",
         "helps": [
             "Show running system information",
-            "running configuration"
+            "Port information",
+            "Specify port number"
+        ]
+    },
+    {
+        "name": "vty_show",
+        "line": "show running status",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "running information",
+            "running status"
         ]
     },
     {
@@ -57,49 +68,23 @@ const showCmdSpec = `
     },
     {
         "name": "vty_show",
-        "line": "show logging",
+        "line": "show memory mempool",
         "mode": "exec",
         "helps": [
             "Show running system information",
-            "Show current logging configuration"
+            "Memory information",
+            "Mempool information"
         ]
     },
     {
         "name": "vty_show",
-        "line": "show memory",
+        "line": "show memory mempool all",
         "mode": "exec",
         "helps": [
             "Show running system information",
-            "Memory statistics"
-        ]
-    },
-    {
-        "name": "vty_show",
-        "line": "show memory all",
-        "mode": "exec",
-        "helps": [
-            "Show running system information",
-            "Memory statistics",
-            "All memory statistics"
-        ]
-    },
-    {
-        "name": "vty_show",
-        "line": "show startup-config",
-        "mode": "exec",
-        "helps": [
-            "Show running system information",
-            "Contentes of startup configuration"
-        ]
-    },
-    {
-        "name": "vty_show",
-        "line": "show thread cpu",
-        "mode": "exec",
-        "helps": [
-            "Show running system information",
-            "Thread information",
-            "Thread CPU usage"
+            "Memory information",
+            "Mempool information",
+            "All mempool information"
         ]
     },
     {
@@ -109,15 +94,6 @@ const showCmdSpec = `
         "helps": [
             "Show running system information",
             "Displays zebra version"
-        ]
-    },
-    {
-        "name": "vty_show",
-        "line": "show work-queues",
-        "mode": "exec",
-        "helps": [
-            "Show running system information",
-            "Work Queue information"
         ]
     }
 ]
