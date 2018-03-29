@@ -20,11 +20,21 @@ const showCmdSpec = `
 [
     {
         "name": "vty_show",
-        "line": "show author",
+        "line": "show port",
         "mode": "exec",
         "helps": [
             "Show running system information",
-            "Author information"
+            "Port information"
+        ]
+    },
+    {
+        "name": "vty_show",
+        "line": "show port all",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "Port information",
+            "All port information"
         ]
     },
     {

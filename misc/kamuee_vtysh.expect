@@ -1,12 +1,12 @@
 #!/usr/bin/expect
 
-spawn telnet localhost 2605
-expect "Password: "
-send "zebra\n"
+spawn telnet localhost 9077
+# expect "Password: "
+# send "zebra\n"
+# expect "> "
+# send "terminal length 0\n"
 expect "> "
-send "terminal length 0\n"
-expect "> "
-send "show memory\n"
+send "show port\n"
 expect "> "
 send "exit\n"
 

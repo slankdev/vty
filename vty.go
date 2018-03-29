@@ -52,7 +52,6 @@ func quaggaRuleSort(rules []string) {
 	sort.Sort(RuleSlice(rules))
 }
 
-// TODO: generalization
 func kamueeVtysh(cmds ...string) *string {
 	cmdArgs := []string{}
 	cmdArgs = append(cmdArgs, "kamuee_vtysh.py")
