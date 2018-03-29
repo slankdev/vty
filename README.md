@@ -23,4 +23,27 @@ hscr-dev> show author
 Hiroki Shirokura aka slankdev
 ```
 
+## Support Commands
+
+normal mode
+```
+$ show port
+$ show port WORD
+$ show port all
+$ show vport
+$ show vport WORD
+$ show vport all
+$ show memory mempool
+$ show memory mempool all
+$ show memory mempool arp
+$ show memory mempool WORD
+$ show acl port WORD
+$ show running status
+$ show version
+```
+
+configure mode
+```
+# set/delete interfaces interface 0 mirror 3
+```
 

@@ -47,25 +47,37 @@ const showCmdSpec = `
             "Specify port number"
         ]
     },
+
     {
         "name": "vty_show",
-        "line": "show running status",
+        "line": "show vport",
         "mode": "exec",
         "helps": [
             "Show running system information",
-            "running information",
-            "running status"
+            "Vport information"
         ]
     },
     {
         "name": "vty_show",
-        "line": "show history",
+        "line": "show vport all",
         "mode": "exec",
         "helps": [
             "Show running system information",
-            "Display the session command history"
+            "Vport information",
+            "All vport information"
         ]
     },
+    {
+        "name": "vty_show",
+        "line": "show vport WORD",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "Vport information",
+            "Specify vport number"
+        ]
+    },
+
     {
         "name": "vty_show",
         "line": "show memory mempool",
@@ -89,6 +101,51 @@ const showCmdSpec = `
     },
     {
         "name": "vty_show",
+        "line": "show memory mempool WORD",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "Memory information",
+            "Mempool information",
+            "Specify socket id"
+        ]
+    },
+    {
+        "name": "vty_show",
+        "line": "show memory mempool arp",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "Memory information",
+            "Mempool information",
+            "Arp mempool information"
+        ]
+    },
+
+    {
+        "name": "vty_show",
+        "line": "show acl port WORD",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "ACL information",
+            "Port acl information",
+            "Specify port number"
+        ]
+    },
+
+    {
+        "name": "vty_show",
+        "line": "show running status",
+        "mode": "exec",
+        "helps": [
+            "Show running system information",
+            "running information",
+            "running status"
+        ]
+    },
+    {
+        "name": "vty_show",
         "line": "show version",
         "mode": "exec",
         "helps": [
@@ -101,16 +158,5 @@ const showCmdSpec = `
 
 const execCmdSpec = `
 [
-    {
-        "name": "vty_exec",
-        "line": "clear thread cpu WORD",
-        "mode": "exec",
-        "helps": [
-            "Clear stored data",
-            "Thread information",
-            "Thread CPU usage",
-            "Display filter (rwtexb)"
-        ]
-    }
 ]
 `
